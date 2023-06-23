@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF</title>
+    <style>
+
+#container{
+display:flex;
+flex-wrap: wrap;
+}
+
+table, th, table td {
+  border: 1px solid gray;
+   width: 100%;
+  border-collapse: collapse;
+  vertical-align: bottom;
+}
+td {
+  height: 20px;
+  width: 20px;
+  margin-left: 1em;
+  vertical-align: middle;
+
+}
+</style>
+
+</head>
+<body>
+{% block content %}
+<div>
+    <br><b><h1><center>FISA DISCIPLINEI</center></h1>
+    <p>1. Date despre program<p></b>
+     {% for p in data %}
+
+        <table>
+        <tr>
+        <td><b>1.1</b> Institutia de invatamant superior</td>
+        <td>{{ p.facultate }}</td>
+        </tr>
+        <tr>
+        <td><b>1.2</b> Facultatea / Departamentul</td>
+        <td>{{ p.departament }}</td>
+        </tr>
+        <tr>
+        <td><b>1.3</b> Catedra</td>
+        <td>{{ p.catedra }} </td>
+        </tr>
+        <tr>
+            <td><b>1.4</b> Domeniul de studii (denumire/cod)</td>
+        <td>{{ p.denumireDomeniuStud }} / {{ p.codDenumireStud }}</td>
+        </tr>
+        <tr>
+        <td><b>1.5</b> Ciclul de studii</td>
+        <td>{{ p.ciclu }}</td>
+        </tr>
+        <tr>
+        <td><b>1.6</b> Programul de studii (denumire/cod)/Calificarea</td>
+        <td>{{ p.denumireProgStud }} / {{ p.codProgStud }} / {{ p.calificare }}</td>
+        </tr>
+    </table>
+
+    <br><p><b>2. Date despre disciplina</b></p>
+        <table>
+            <tr>
+                <td colspan="3"><b>2.1</b> Denumirea disciplinei</td>
+                <td colspan="5">{{ p.disciplina }} </td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>2.2</b> Titularul activitatilor de curs</td>
+                <td colspan="5">{{ p.titularCurs }} </td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>2.3</b> Titularul activitatilor aplicative</td>
+                <td colspan="5">{{ p.titularLab }} </td>
+            </tr>
+             <tr>
+                 <td style="width:110%;"><b>2.4</b> Anul de stiudiu</td>
+                 <td style="width:20%;">{{ p.an }}</td>
+                 <td style="width:80%;"><b>2.5</b> Semestru</td>
+
+                 <td style="width:20%;">{{ p.semestru }}</td>
+                 <td style="width:110%;"><b>2.6</b> Tipul de evaluare</td>
+                 <td style="width:20%;">{{ p.tipevaluare }}</td>
+                 <td style="width:110%;"><b>2.7</b> Regimul disciplinei</td>
+                 <td style="width:40%;">{{ p.regimdis }}</td>
+            </tr>
+        </table>
+
+    <br><p><b>3. Timpul total estimat</b> (ore pe semestru al activitatilor didactice)</p>
+        <table>
+            <tr>
+                <td style="width:60%;"><b>3.1</b> Numar de ore pe saptamana</td>
+                <td style="width:30%;">{{ p.totoresap }} , din care: </td>
+                <td style="width:30%;"><b>3.2</b> curs</td>
+                <td style="width:20%;">{{ p.cursresap }}</td>
+                <td style="width:70%;"><b>3.3</b> seminar/laborator/ proiect/practica</td>
+                <td style="width:20%;">{{ p.labresap }}</td>
+            </tr>
+            <tr>
+                <td style="width:60%; "><b>3.4</b> Total ore din planul de invatamant</td>
+                <td style="width:30%;">{{ p.totorean }} , din care: </td>
+                <td style="width:30%;"><b>3.5</b> curs</td>
+                <td style="width:20%;">{{ p.cursrean }}</td>
+                <td style="width:70%;"><b>3.6</b> activitati aplicative</td>
+                <td style="width:20%;">{{ p.labrean }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"><b>3.7</b> Distributia fondului de timp pentru activitati individuale asociate disciplinei</td>
+                <td  colspan="1" style="width:30%;">ore</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Studiul dupa manual, suport de curs, bibliografie si notite</td>
+                <td  colspan="1" style="width:30%;">{{ p.studiu }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Documentare suplimentara in biblioteca, pe platformele electronice de specialitate si pe teren</td>
+                <td  colspan="1" style="width:30%;">{{ p.documentare }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Pregatire seminarii/laboratoare, teme, referate, portofolii si eseuri</td>
+                <td  colspan="1" style="width:30%;">{{ p.pregatire }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Tutoriat</td>
+                <td  colspan="1" style="width:30%;">{{ p.tutoriat }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Examinari</td>
+                <td  colspan="1" style="width:30%;">{{ p.examinari }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;"> Alte activitati </td>
+                <td  colspan="1" style="width:30%;">{{ p.alteactivitati }}</td>
+            </tr>
+            <tr>
+                <td  colspan="5" style="width:60%;background-color:Gainsboro;"><b> Total ore activitati individuale </b></td>
+                <td  colspan="1" style="width:30%;background-color:Gainsboro;"></td>
+            </tr>
+            <tr>
+                <td colspan="1" style="width:60%; background-color:Gainsboro;"><b>3.8 Total ore pe semestru </b></td>
+                <td colspan="5" style="width:30%;background-color:Gainsboro;"></td>
+            </tr>
+            <tr>
+                <td colspan="1" style="width:60%; background-color:Gainsboro;"><b>3.9 Numarul de credite </b></td>
+                <td colspan="5" style="width:30%;background-color:Gainsboro;">{{ p.nrcredite }}</td>
+            </tr>
+        </table>
+    <br><p><b>4. Preconditii </b> (acolo unde este cazul)</p>
+        <table>
+            <tr>
+                <td style="width:60%;"><b>4.1</b> de curriculum</td>
+                <td >&bull; {{ p.precondCurr }}</td>
+            </tr>
+            <tr>
+                <td style="width:60%;"><b>4.2</b> de competente</td>
+                <td >&bull; {{ p.precondCom }}</td>
+            </tr>
+        </table>
+
+    <br><p><b>5. Conditii</b> (acolo unde este cazul))</p>
+        <table>
+            <tr>
+                <td style="width:60%;"><b>5.1</b> de desfasurare a cursului</td>
+                <td >&bull; {{ p.condDesCurs }}</td>
+            </tr>
+            <tr>
+                <td style="width:60%;"><b>5.2</b> de desfasurare a activitatilor practice</td>
+                <td >&bull; {{ p.condDesLab }}</td>
+            </tr>
+        </table>
+     <br><p><b>6. Competent e specifice acumulate</b></p>
+    <table>
+        <tr >
+                <td style="width:30%;height: 50px; vertical-align: middle;background-color:Gainsboro;"> Competente profesionale</td>
+                <td style="height: 100px; vertical-align: middle;background-color:Gainsboro;">&bull; {{ p.comProf }}</td>
+        </tr>
+        <tr>
+                <td style="width:30%;height: 100px; vertical-align: middle;background-color:Gainsboro; ">Competente transversale</td>
+                <td style="height: 100px; vertical-align: middle;background-color:Gainsboro;">&bull; {{ p.comTrans }}</td>
+        </tr>
+    </table>
+     <br><p><b>7. Obiectivele disciplinei</b>(reiesind din grila competentelor specifice acumulate)</p>
+    <table>
+        <tr>
+            <td style="width:30%;height: 100px; vertical-align:middle;"><b>7.1</b> Obiectivul general al discipline</td>
+            <td style="height: 100px; vertical-align:middle;">&bull; {{ p.obiecGeneral }}</td>
+        </tr>
+        <tr>
+            <td style="width:30%;height: 100px; vertical-align:middle;"><b>7.2</b> Obiectivele specifice</td>
+            <td style="height: 100px; vertical-align:middle;">&bull; {{ p.obiecSpeci }}</td>
+        </tr>
+    </table>
+    <br><p><b>8. Continuturi</b></p>
+        <table>
+            <tr>
+            <td style="width:65%;"><b> 8.1</b> Curs</td>
+            <td style="width:25%;margin-left: 5em;"> Numar de ore</td>
+            <td style=" width:25%;margin-left: 4em;"> Metode de predare</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;"> {{ p.curs1 }}</td>
+            <td style="width:25%;"> {{ p.orec1 }}</td>
+            <td  rowspan="14" style=" width:25%;vertical-align:middle;"> {{ p.metpredcurs }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs2 }}</td>
+            <td style="width:25%;"> {{ p.orec2 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%; background-color:Gainsboro;">{{ p.curs3 }}</td>
+            <td style="width:25%;"> {{ p.orec3 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs4 }}</td>
+            <td style="width:25%;"> {{ p.orec4 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs5 }}</td>
+            <td style="width:25%;"> {{ p.orec5 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs6 }}</td>
+            <td style="width:25%;"> {{ p.orec6 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs7 }}</td>
+            <td style="width:25%;"> {{ p.orec7 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs8 }}</td>
+            <td style="width:25%;"> {{ p.orec8 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs9 }}</td>
+            <td style="width:25%;"> {{ p.orec9 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs10 }}</td>
+            <td style="width:25%;"> {{ p.orec10 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs11 }}</td>
+            <td style="width:25%;"> {{ p.orec11 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs12 }}</td>
+            <td style="width:25%;"> {{ p.orec12 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs13 }}</td>
+            <td style="width:25%;"> {{ p.orec13 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.curs14 }}</td>
+            <td style="width:25%;"> {{ p.orec14 }}</td>
+            </tr>
+            <tr>
+            <td colspan="3" style="width:65%; height: 100px; background-color:Gainsboro;vertical-align:middle;">Bibliografie  {{ p.bibliografCurs }}</td>
+            </tr>
+        </table><br><br><br><br><br><br><br>
+    <table>
+            <tr>
+            <td style="width:65%;"><b> 8.2</b> Activitati aplicative</td>
+            <td style="width:25%;margin-left: 5em;"> Numar de ore</td>
+            <td style=" width:25%;margin-left: 4em;"> Metode de predare</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;"> {{ p.lab1 }}</td>
+            <td style="width:25%;"> {{ p.orel1 }}</td>
+            <td  rowspan="10" style=" width:25%;vertical-align:middle;"> {{ p.metpredlab }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab2 }}</td>
+            <td style="width:25%;"> {{ p.orel2 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%; background-color:Gainsboro;">{{ p.lab3 }}</td>
+            <td style="width:25%;"> {{ p.orel3 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab4 }}</td>
+            <td style="width:25%;"> {{ p.orel4 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab5 }}</td>
+            <td style="width:25%;"> {{ p.orel5 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab6 }}</td>
+            <td style="width:25%;"> {{ p.orel6 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab7 }}</td>
+            <td style="width:25%;"> {{ p.orel7 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab8 }}</td>
+            <td style="width:25%;"> {{ p.orel8 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab9 }}</td>
+            <td style="width:25%;"> {{ p.orel9 }}</td>
+            </tr>
+            <tr>
+            <td style="width:65%;background-color:Gainsboro;">{{ p.lab10 }}</td>
+            <td style="width:25%;"> {{ p.orel10 }}</td>
+            </tr>
+            <tr>
+            <td colspan="3" style="width:65%; height: 100px; background-color:Gainsboro;vertical-align:middle;">Bibliografie  {{ p.bibliografLab }}</td>
+            </tr>
+        </table>
+
+        <br><p><b>9. Coroborarea continuturilor disciplinei cu asteptarile reprezentantilor comunitatii epistemice,sociatiilor profesionale si angajatori reprezentativi din domeniul aferent programului</b></p>
+    <table>
+        <tr>
+            <td  style="height: 70px;vertical-align:middle;"> {{ p.coroborare }}</td>
+        </tr>
+    </table>
+    <br><p><b>10. Evaluare</b></p>
+    <table>
+        <tr>
+        <td style="margin-left: 5em;"> Tip activitate</td>
+        <td ><b>10.1 </b> Criterii de evaluare</td>
+        <td ><b>10.2 </b> Metode de evaluare</td>
+        <td ><b>10.3 </b> Pondere din nota finala</td>
+        </tr>
+        <tr>
+        <td ><b>10.4 </b> Curs</td>
+        <td >{{ p.criterievalc }}</td>
+        <td >{{ p.metvalc }}</td>
+        <td >{{ p.ponderenotc }}</td>
+        </tr>
+        <tr>
+        <td ><b>10.5 </b> Curs</td>
+        <td ><b>S: </b> {{ p.criterievalac }}</td>
+        <td >{{ p.metvalac }}</td>
+        <td >{{ p.ponderenotac }}</td>
+        </tr>
+        <tr>
+        <td ><br></td>
+        <td ><b>L: </b> {{ p.criterievall }}</td>
+        <td >{{ p.metvall }}</td>
+        <td >{{ p.ponderenotl }}</td>
+        </tr>
+        <tr>
+        <td ><br></td>
+        <td ><b>P: </b> {{ p.criterievalp }}</td>
+        <td >{{ p.metvalp }}</td>
+        <td >{{ p.ponderenotp }}</td>
+        </tr>
+        </tr>
+        <tr>
+         <td ><br></td>
+        <td ><b>Pr: </b> {{ p.criterievalpr }}</td>
+        <td >{{ p.metvalpr }}</td>
+        <td >{{ p.ponderenotpr }}</td>
+        </tr>
+        </tr>
+    </table><br>
+
+    <table style="border: 1px solid white">
+        <tr>
+        <td style="width:30%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Data completarii</b></td>
+        <td style="width:30%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Titular de curs (semnatura)</b></td>
+        <td style="width:30%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Titular activitati aplicative (semnatura)</b></td>
+        </tr>
+        <tr>
+        <td style="width:30%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em; ">  {{ p.date }}</td>
+        <td style="width:30%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em; ">  {{ p.titcurs }}</td>
+        <td style="width:30%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em; ">  {{ p.titac }}</td>
+        </tr>
+        <tr>
+        <td style="width:50%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Director de departament (semnatura)</b></td>
+        <td style="width:50%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Data avizarii in Consiliul Facultatii</b></td>
+        <td style="width:60%;height: 90px; border: 1px solid white;margin-left: 5em;"><b>Decan (semnatura)</b></td>
+        </tr>
+        <tr>
+        <td style="width:40%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em;">{{ p.directordep }}</td>
+        <td style="width:40%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em;"></td>
+        <td style="width:40%;height: 50px; border: 1px solid white;vertical-align: middle;margin-left: 5em;">{{ p.decan }}</td>
+        </tr>
+
+    </table>
+
+
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

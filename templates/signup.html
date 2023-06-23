@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<title>UPT</title>
+    <link rel="stylesheet" href="{% static 'signup/stylesign.css' %}">
+</head>
+
+ <body>
+   {% block content %}
+	<div class="main" >
+		<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<form method="POST">
+					{% csrf_token %}
+					<label  aria-hidden="true">Sign up</label>
+					<input type=text name="user" required  placeholder="User">
+					<input type=email name="email" required  placeholder="Email">
+					<input type=password name="pwd" required placeholder="Parola">
+					<input type=password name="pwd2" required placeholder="Parola">
+					<button type="submit">Sign up</button>
+				</form>
+				<button><a href="/login">Log In</a></button>
+			</div>
+	</div>
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<title>UPT</title>
+    <link rel="stylesheet" href="{% static 'login/stylelogin.css' %}">
+</head>
+
+ <body>
+	{% block content %}
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<form method="POST">
+					{% csrf_token %}
+					<label  aria-hidden="true">Log In</label>
+					<input type=text name="user" required  placeholder="User">
+					<input type=password name="pwd" required placeholder="Parola">
+					<button>Login</button>
+				</form>
+				<button><a href="/signup" >Sign Up</a></button>
+
+			</div>
+	</div>
+   {% endblock %}
+</body>
+</html>

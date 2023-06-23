@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+	<title>Profil</title>
+
+        <!-- CSS FILES -->
+        <link rel="stylesheet" href="{% static 'profil/css/style1.css'%}" type="text/css">
+        <link rel="stylesheet" href="{% static 'profil/css/style2.css'%}" type="text/css">
+        <link rel="stylesheet" href="{% static 'profil/css/style3.css'%}" type="text/css">
+        <link rel="stylesheet" href="{% static 'profil/css/risen.css'%}" type="text/css">
+
+</head>
+
+
+<body>
+{% block content %}
+ <header class="site-header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-house-fill me-2"></i>
+                            Discipline
+                        </p>
+
+                        <p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+                            <i class="site-header-icon bi-whatsapp me-2"></i>
+                            <i class="site-header-icon bi-facebook me-2"></i>
+                            <i class="site-header-icon bi-envelope-fill me-2"></i>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/home" >
+                   {% load static %} <img src="{% static 'profil/images/logo.png ' %}" class=logo img-fluid alt="" />
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/home">Acasa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cauta">Discipline</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/profil">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Log Out</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+	<div class="container-fluid">
+        {% for p in pr %}
+			<div class="main-content-wrapper">
+				<div class="container-fluid">
+					<div class="resume-wrapper mx-auto rounded-2">
+						<div class="resume-header px-4 px-lg-5">
+							<div class="resume-profile-holder text-center">
+
+								<h2 class="resume-name text-uppercase">{{ p.nume }}</h2>
+								<div class="resume-role-title text-uppercase">{{ p.profesie }}</div>
+								<div class="resume-contact mt-4">
+									<ul class="resume-contact-list list-unstyled list-inline mb-0 justify-content-between">
+                                        <li class="list-inline-item me-md-3 me-lg-5"><i class="resume-contact-icon bi bi-telephone-inbound me-2"></i><label>{{ p.telefon }}</label></li>
+										<li class="list-inline-item me-md-3 me-lg-5"><i class="resume-contact-icon bi bi-envelope me-2"></i>{{ p.email }}</li>
+									</ul>
+								</div><!--//resume-contact-->
+							</div><!--//profile-holder-->
+						</div><!--//resume-header-->
+						<div class="resume-body p-4 p-lg-5">
+							<div class="row">
+
+									<section class="resume-summary-section resume-section">
+										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>Despre</h3>
+                                        <label class="resume-summary-desc">{{ p.despre }}</label>
+
+									</section><!--//resume-section-->
+
+
+									<hr>
+									<section class="resume-projects-section resume-section">
+										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"><i class="resume-section-heading-icon bi bi-code-slash me-2"></i>Optional</h3>
+                                        <label class="resume-summary-desc">{{ p.optional }}</label>
+									</section>
+									<hr>
+								</div><!--//col-side-->
+                                <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;"><a href="/update">Update</a></button>
+							</div><!--//row-->
+					    </div><!--//resume-body-->
+				    </div><!--//resume-wrapper-->
+				</div><!--//container-fluid-->
+			</div><!--//main-content-wrapper-->
+    {% endfor %}
+	</div><!--//container-->
+	{% endblock %}
+</body>

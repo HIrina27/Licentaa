@@ -1,0 +1,476 @@
+<!doctype html>
+{% load static %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Adauga Lista</title>
+
+        <!-- CSS FILES -->
+
+        <link rel="stylesheet" href="{% static 'adauga/css/Style1.css'%}" type="text/css">
+        <link rel="stylesheet" href="{% static 'adauga/css/Style2.css'%}" type="text/css">
+        <link rel="stylesheet" href="{% static 'adauga/css/Style3.css'%}" type="text/css">
+        <script src="{% static 'adauga/JS/dropdown.js' %}" type="text/javascript"></script>
+        <script src="{% static 'adauga/JS/number.js' %}" type="text/javascript"></script>
+    </head>
+
+    <body onload="myFunction()">
+        {% block content %}
+        <header class="site-header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-12 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-house-fill me-2"></i>
+                            Discipline
+                        </p>
+                        <p class="site-header-icon-wrap text-white d-flex mb-0 ms-auto">
+                            <i class="site-header-icon bi-whatsapp me-2"></i>
+                            <i class="site-header-icon bi-facebook me-2"></i>
+                            <i class="site-header-icon bi-envelope-fill me-2"></i>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/home" >
+                      {% load static %} <img src="{% static 'adauga/images/logo.png ' %}" class=logo img-fluid alt="" />
+
+                    <span class="ms-2" >Portal</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <main>
+
+            <section class="hero-section">
+                <div class="section-overlay"></div>
+                <space1></space1>
+                <b><label1>Date despre program</label1><ul></ul></b>
+               <div class="lista">
+             <form method="POST" >
+                 {% csrf_token %}
+                <div class="container"><div class="category_div" id="category_div">
+                            <label2 for="">Facultatea:</label2>
+                                    <select style="min-width:250px" id="source" name="source" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                                        <option>Selecteaza o facultate</option>
+                                        <option value="Automatica si Calculatoare">Automatica si Calculatoare</option>
+                                        <option value="Arhitectura si Urbanism">Arhitectura si Urbanism</option>
+                                        <option value="Chimie Industriala si Ingineria Mediului">Chimie Industriala si Ingineria Mediului</option>
+                                        <option value="Constructii">Constructii</option>
+                                        <option value="Electronica, Telecomunicatii si Tehnologii Informationale">Electronica, Telecomunicatii și Tehnologii Informationale</option>
+                                        <option value="Inginerie Electrica si Energetica">Inginerie Electrica si Energetica</option>
+                                        <option value="Inginerie din Hunedoara">Inginerie din Hunedoara</option>
+                                        <option value="Management in Productie si Transporturi">Management in Productie si Transporturi</option>
+                                        <option value="Mecanica">Mecanica</option>
+                                        <option value="Stiinte ale Comunicarii">Stiinte ale Comunicarii</option>
+                                    </select><space></space></div>
+
+                            <div class="sub_category_div" id="sub_category_div">
+                            <label4 for="">Departamentul:</label4>
+                                    <select id="status" name="status" style="width: 150px" >
+                                        <option value=""></option>
+                                    </select></div>
+
+                            <space></space>
+                            <label4 for="catedra" >Catedra:</label4>
+                                    <select name="catedra" style="min-width: 150px"  id="catedra">
+                                        <option>Selecteaza</option>
+                                        <option>-</option>
+                                    </select>
+
+                </div>
+                <div class="container"><ul></ul>
+                       <label4 for="den" for="codul">Domeniul de studii:</label4>
+                                <label4 for="denumire" id="den">Denumire:</label4>
+                                <input type="text" id="denumire" name="denumire" required minlength="3" maxlength="60" size="20">
+                                    <label for="cod" id="codul">Cod:</label>
+                                    <input type="text" id="cod" name="cod" required minlength="3" maxlength="20" size="10">
+
+
+                       <label4 for="ciclu" >Ciclul de studii:</label4>
+                                    <select name="ciclu" id="ciclu" style="min-width: 200px">
+                                        <option>Select</option>
+                                        <option>Licenta</option>
+                                        <option>Master</option>
+                                    </select>
+                    <ul></ul>
+                       <label4 for="den2" for="codul2" for="calificare" >Programul de studii:</label4>
+                                    <label4 for="denumire2" id="den2" >Denumire:</label4>
+                                    <input type="text" id="denumire2" name="denumire2" required minlength="3" maxlength="60" size="20">
+
+                                     <label for="cod2" id="codul2" >Cod:</label>
+                                         <input type="text" id="cod2" name="cod2" required minlength="2" maxlength="20" size="10">
+
+                                    <label4 for="calificare">Calificare</label4>
+                                    <select name="calificare" style="min-width: 250px" id="calificare">
+                                        <option>Select</option>
+                                        <option>Inginer</option>
+                                    </select>
+                    </div><ul></ul>
+                <space1></space1>
+                <b><label1>Date despre disciplină</label1><ul></ul></b>
+                  <div class="container">
+                    <label4 for="disciplina" >Denumirea disciplinei:</label4>
+                      <input type="text" id="disciplina" name="disciplina" required minlength="2" maxlength="60" size="30"><space></space>
+                      <label for="titularcurs">Titularul activităţilor de curs:</label>
+                      <select name="titularcurs"  style="width: 180px" id="titularcurs"><option value=""> </option></select><space></space>
+                      <label for="titularactivitati">Titularul activităţilor aplicative:</label>
+                      <select name="titularactivitati"  style="width: 180px" id="titularactivitati">
+                                        <option value=""> </option>
+                                    </select>
+                  </div>
+                      <div class="container"><ul></ul>
+                          <label4 for="an" >Anul de studiu:</label4>
+                            <select name="an"  style="min-width: 70px" id="an" required>
+                                <option>Select</option>
+                                <option> </option>
+                                <option>I</option>
+                                <option>II</option>
+                                <option>III</option>
+                                <option>IV</option>
+                            </select><space1></space1>
+                          <label for="semestru">Semestrul:</label>
+                            <select name="semestru"  style="min-width: 70px" id="semestru" required>
+                                <option>Select</option>
+                                <option> </option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select><space1></space1>
+                          <label for="evaluare">Tipul de evaluare:</label>
+                            <select name="evaluare"  style="min-width: 150px" id="evaluare" required>
+                                <option >Select</option>
+                                <option> </option>
+                                <option>E</option>
+                                <option>D</option>
+                                <option>ED</option>
+                                <option>C</option>
+                                <option>ES</option>
+                                <option>Distribuita</option>
+                            </select><space1></space1>
+                          <label for="regim">Regimul disciplinei:</label>
+                            <select name="regim"  style="min-width: 150px" id="regim" required>
+                                <option>Select</option>
+                                <option> </option>
+                                <option>Obligatorie</option>
+                                <option>Optional</option>
+                                <option>DC</option>
+                                <option>DD</option>
+                                <option>DS</option>
+
+                            </select><space></space>
+                      </div>
+
+                 <ul></ul>
+                <space1></space1>
+
+                <b><label1>Timpul total estimat</label1></b>
+                 <label1>(ore pe semestru al activităţilor didactice)</label1><ul></ul>
+                  <div class="container">
+                      <label4 for="" >Număr de ore pe săptămână:</label4>
+                      <select name="oresap" id="oresap"><option value=""> </option></select>
+                      <space></space>
+
+                      <label for="nrcurs">din care:</label><space></space><label> curs</label>
+                      <select name="nrcurs"  style="min-width: 70px" id="nrcurs">
+                              <option value=""> </option></select>
+                      <space></space><label for="nrsem">, seminar/laborator/ proiect/practică</label>
+                        <select name="nrsem"  style="min-width: 70px" id="nrsem">
+                              <option value=""> </option></select>
+                  </div><ul></ul>
+                 <div class="container">
+
+                      <label4 for="oreplan" >Total ore din planul de învăţământ:</label4>
+                      <select name="oreplan"  style="min-width: 90px" id="oreplan">
+                              <option value=""> </option></select><space></space>
+
+                      <label for="orecurs">din care:</label><space></space><label> curs</label>
+                      <select name="orecurs"  style="min-width: 70px" id="orecurs">
+                              <option value=""> </option></select>
+                      <space></space><label for="oresem">, activităţi aplicative</label>
+                        <select name="oresem"  style="min-width: 70px" id="oresem">
+                              <option value=""> </option></select>
+                  </div><ul></ul>
+
+                      <i><label4>Distribuţia fondului de timp pentru activităţi individuale asociate disciplinei pe ore</label4></i><ul></ul>
+                  <div class="container">
+                      <label4 for="manual" >Studiul după manual, suport de curs, bibliografie şi notiţe:</label4>
+                      <select name="manual"  style="min-width: 90px" id="manual">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                      <label4 for="suplimentar" >Documentare suplimentară în bibliotecă, pe platformele electronice de specialitate şi pe teren:</label4>
+                      <select name="suplimentar"  style="min-width: 90px" id="suplimentar">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                      <label4 for="teme" >Pregătire seminarii/laboratoare, teme, referate, portofolii şi eseuri:</label4>
+                      <select name="teme"  style="min-width: 90px" id="teme">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                      <label4 for="tutoriat" >Tutoriat:</label4>
+                      <select name="tutoriat"  style="min-width: 90px" id="tutoriat">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                      <label4 for="examinări" >Examinări:</label4>
+                      <select name="examinări"  style="min-width: 90px" id="examinări">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                      <label4 for="alteActivităţi" >Alte activităţi:</label4>
+                      <select name="alteActivităţi"  style="min-width: 90px" id="alteActivităţi">
+                              <option value=""> </option></select><space></space>
+                 </div><ul></ul>
+
+                 <div class="container">
+                     <b><label4 >Total ore activităţi individuale:  </label4></b><ul></ul>
+                     <b><label4 >Total ore pe semestru:  </label4></b>
+                 </div><ul></ul>
+
+                 <div class="container">
+                     <b><label4 for="nrcredite" >Numărul de credite:</label4></b>
+                      <select name="nrcredite"  style="min-width: 90px" id="nrcredite">
+                              <option value=""> </option></select>
+                 </div><ul></ul>
+                <space1></space1>
+                <b><label1>Precondiții(acolo unde este cazul)</label1><ul></ul></b>
+                  <div class="container" >
+                      <p><label4 for="curriculum" >De curriculum:</label4></p>
+                      <textarea name="curriculum" rows="2" cols="90" ></textarea>
+                  </div><ul></ul>
+                   <div class="container">
+                       <p><label4 for="competente" >De competenţe:</label4></p>
+                      <textarea name="competente" rows="2" cols="90" ></textarea>
+                   </div><ul></ul>
+                <space1></space1>
+                <b><label1>Condiţii (acolo unde este cazul)</label1><ul></ul></b>
+                  <div class="container">
+                      <p><label4 for="desfcurs" >De desfăşurare a cursului:</label4></p>
+                      <textarea name="desfcurs" rows="2" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                 <div class="container">
+                     <p><label4 for="desflab" >De desfăşurare a activităţilor practice:</label4></p>
+                      <textarea name="desflab" rows="2" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                <space1></space1>
+
+                 <b><label1>Competenţe specifice acumulate</label1><ul></ul></b>
+                  <div class="container">
+                      <p><label4 for="compprof" >Competenţe profesionale:</label4></p>
+                      <textarea name="compprof" rows="3" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                 <div class="container">
+                      <p><label4 for="comptrans" >Competenţe transversale:</label4></p>
+                      <textarea name="comptrans" rows="3" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                <space1></space1>
+
+                 <b><label1>Obiectivele disciplinei (reieşind din grila competenţelor specifice acumulate)</label1><ul></ul></b>
+                  <div class="container">
+                      <p><label4 for="obiecgeneral" >Obiectivul general al disciplinei:</label4></p>
+                      <textarea name="obiecgeneral" rows="4" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                 <div class="container">
+                      <p><label4 for="obiecspecific" >Obiectivele specifice:</label4></p>
+                     <textarea name="obiecspecific" rows="4" cols="90" ></textarea><space></space>
+                  </div><ul></ul>
+                <space1></space1>
+
+                 <b><label1>Conţinuturi</label1><ul></ul></b>
+                  <div class="container">
+                      <b><label4>Curs:</label4></b><space2></space2>
+                      <b><label>Numar de ore:</label></b><ul></ul>
+                  <ul></ul>
+                      <textarea id="curs1" name="curs1" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec1"  style="min-width: 80px" id="orec1"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs2" name="curs2" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec2"  style="min-width: 80px" id="orec2"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs3" name="curs3" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec3"  style="min-width: 80px" id="orec3"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs4" name="curs4" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec4"  style="min-width: 80px" id="orec4"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs5" name="curs5" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec5"  style="min-width: 80px" id="orec5"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs6" name="curs6" rows="4" cols="90" ></textarea><space3></space3>
+                     <select name="orec6"  style="min-width: 80px" id="orec6"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs7" name="curs7" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec7"  style="min-width: 80px" id="orec7"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs8" name="curs8" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec8"  style="min-width: 80px" id="orec8"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs9" name="curs9" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec9"  style="min-width: 80px" id="orec9"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs10" name="curs10" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec10"  style="min-width: 80px" id="orec10"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs11" name="curs11" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec11"  style="min-width: 80px" id="orec11"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs12" name="curs12" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec12"  style="min-width: 80px" id="orec12"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs13" name="curs13" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec13"  style="min-width: 80px" id="orec13"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="curs14" name="curs14" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="orec14"  style="min-width: 80px" id="orec14"><option> </option></select><space></space>
+                  <ul></ul>
+                 <space1></space1>
+                      <p><label4 for="cbibliografie" >Bibliografie:</label4></p>
+                      <textarea name="cbibliografie" rows="4" cols="100" ></textarea><space3></space3>
+                  <ul></ul>
+                 <space1></space1>
+                     <p><label4 for="metpred" >Metode de predare:</label4></p>
+                      <textarea name="metpred" rows="4" cols="100" ></textarea><space3></space3>
+                  </div><ul></ul>
+                  <div class="container"><ul></ul>
+                      <b><label4>Activităţi aplicative:</label4></b><space4></space4>
+                      <b><label>Numar de ore:</label></b><ul></ul>
+                  <ul></ul>
+                      <textarea id="lab1" name="lab1" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec1"  style="min-width: 80px" id="lrec1"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab2" name="lab2" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec2"  style="min-width: 80px" id="lrec2"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab3" name="lab3" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec3"  style="min-width: 80px" id="lrec3"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab4" name="lab4" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec4"  style="min-width: 80px" id="lrec4"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab5" name="lab5" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec5"  style="min-width: 80px" id="lrec5"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab6" name="lab6" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec6"  style="min-width: 80px" id="lrec6"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab7" name="lab7" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec7"  style="min-width: 80px" id="lrec7"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab8" name="lab8" rows="4" cols="90" ></textarea><space3></space3>
+                     <select name="lrec8"  style="min-width: 80px" id="lrec8"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab9" name="lab9" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec9"  style="min-width: 80px" id="lrec9"><option> </option></select><space></space>
+                  <ul></ul>
+                      <textarea id="lab10" name="lab10" rows="4" cols="90" ></textarea><space3></space3>
+                      <select name="lrec10" style="min-width: 80px" id="lrec10"><option> </option></select><space></space>
+                  <ul></ul>
+                 <space1></space1>
+                      </div><ul></ul><div class="container">
+                      <p><label4 for="lbibliografie" >Bibliografie:</label4></p>
+                      <textarea id="lbibliografie" rows="4" cols="100" ></textarea><space3></space3>
+                  <ul></ul>
+                 <space1></space1>
+                      <p><label4 for="metpredl" >Metode de predare:</label4></p>
+                      <textarea id="metpredl" rows="4" cols="100" ></textarea><space3></space3>
+                  </div><ul></ul>
+                 <space1></space1>
+
+                 <b><label1>Coroborarea conţinuturilor disciplinei cu aşteptările reprezentanţilor comunităţii epistemice,asociaţiilor profesionale şi angajatori reprezentativi din domeniul aferent programului</label1><ul></ul></b>
+                 <div class="container"><space1></space1>
+                      <textarea id="coroborarea" rows="4" cols="130" ></textarea><space3></space3>
+                  </div><ul></ul> <space1></space1>
+
+                 <b><label1>Evaluare</label1><ul></ul></b>
+                 <div class="container">
+                     <b><label4>Tip activitate:</label4></b><space3></space3>
+                     <b><label>Criterii de evaluare:</label></b><space3></space3>
+                     <b><label>Metode de evaluare:</label></b><space3></space3>
+                     <b><label>Pondere din nota finală:</label></b><space1></space1><ul></ul>
+                     <b><label4>Curs :</label4></b><space3></space3>
+                     <textarea name="curscri" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="cursmet" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="curspro" rows="1" cols="15" ></textarea>
+
+                     <ul></ul>
+                     <b><label4>Activitati practice:</label4></b><space5></space5>
+                     <textarea name="labscri" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="labsmet" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="labspro" rows="1" cols="15" ></textarea>
+                     <ul></ul>
+                     <space5></space5><space3></space3>
+                     <label>L:</label>
+                     <textarea name="lscri" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="lsmet" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="lspro" rows="1" cols="15" ></textarea>
+                     <ul></ul>
+                     <space5></space5><space3></space3>
+                      <label>P:</label>
+                     <textarea name="pscri" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="psmet" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="pspro" rows="1" cols="15" ></textarea>
+                     <ul></ul>
+                     <space5></space5><space3></space3>
+                     <label>Pr:</label>
+                     <textarea name="prscri" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="prsmet" rows="2" cols="30" ></textarea><space1></space1>
+                     <textarea name="prspro" rows="1" cols="15" ></textarea>
+                     <ul></ul>
+
+                     <b><label4>Standard minim de performanţă (volumul de cunoştinţe minim necesar pentru promovarea disciplinei şi modul în care se verifică stăpânirea lui):</label4></b><ul></ul><space1></space1>
+                     <textarea name="standard" rows="4" cols="130" ></textarea><space3></space3>
+                 <ul></ul><ul></ul><ul></ul>
+                     <label>Data completării</label>
+                     <input type="date" id="date" name="date" value="2018-07-22" min="2023-01-01" max="2023-12-31"><space1></space1>
+                     <label>Titular de curs</label>
+                     <select name="titcurs"  style="width: 200px" id="titcurs">
+                                        <option value=""> </option></select><space1></space1>
+                     <label>Titular de activitati aplicative</label>
+                     <select name="titlab"  style="width: 200px" id="titlab">
+                                        <option value=""> </option></select><space1></space1><ul></ul>
+
+                      <label>Director de departament</label>
+                     <select name="directdep"  style="width: 200px" id="directdep">
+                                        <option value=""> </option></select><space3></space3>
+                     <label>Decan</label>
+                      <select name="decanat"  style="width: 200px" id="decanat">
+                                        <option value=""> </option></select><space1></space1>
+                 </div>
+
+                <button  style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 2em;font-weight: bold;margin-top: 60px;border-radius: 50%;" href="/pdf">Save</button>
+               </form>
+               </div>
+            </section>
+       </main>
+         <script src="static/dropdown.js"></script>
+    {% endblock %}
+    </body>
+</html>
