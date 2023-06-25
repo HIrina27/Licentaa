@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from login.views import signin, error, home, signup, logout, adminAdd, Sterge, homeAdmin
-from prof.views import profil, updateprofil, insta
+from prof.views import profil, updateprofil, schimba
 from disciplina.views import lista, GeneratePdf, Cautare, Afisare, Mail
 from django.conf.urls.static import static
 from django.conf import settings
@@ -40,7 +40,7 @@ urlpatterns = [
     path('AdminAdd/', adminAdd),
     path('Sterge/', Sterge),
     path('Acasa/', homeAdmin),
-    path('Insta/', insta),
+    path('SchimbaParola/', schimba),
 ]
 
 

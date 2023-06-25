@@ -48,5 +48,6 @@ def updateprofil(request):
    return render(request, 'updateprofil.html', {'pr': pr})
 
 
-def insta(request):
-   return redirect('https://www.instagram.com/')
+
+def schimba(request):
+   return render(request, 'parola.html')

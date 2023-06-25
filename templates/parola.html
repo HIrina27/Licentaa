@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
 
-	<title>Profil</title>
+	<title>Schimbă parola</title>
 
         <!-- CSS FILES -->
         <link rel="stylesheet" href="{% static 'profil/css/style1.css'%}" type="text/css">
@@ -26,8 +26,6 @@
                             <i class="bi-house-fill me-2"></i>
                             Discipline
                         </p>
-
-
                     </div>
 
                 </div>
@@ -45,7 +43,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link " href="/home">Acasa</a>
                         </li>
@@ -58,55 +56,38 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Log Out</a>
                         </li>
-
                     </ul>
                 </div>
             </div>
         </nav>
 
 	<div class="container-fluid">
-        {% for p in pr %}
 			<div class="main-content-wrapper">
 				<div class="container-fluid">
 					<div class="resume-wrapper mx-auto rounded-2">
-						<div class="resume-header px-4 px-lg-5">
-							<div class="resume-profile-holder text-center">
-
-								<h2 class="resume-name text-uppercase">{{ p.nume }}</h2>
-								<div class="resume-role-title text-uppercase">{{ p.profesie }}</div>
-								<div class="resume-contact mt-4">
-									<ul class="resume-contact-list list-unstyled list-inline mb-0 justify-content-between">
-                                        <li class="list-inline-item me-md-3 me-lg-5"><i class="resume-contact-icon bi bi-telephone-inbound me-2"></i><label>{{ p.telefon }}</label></li>
-										<li class="list-inline-item me-md-3 me-lg-5"><i class="resume-contact-icon bi bi-envelope me-2"></i>{{ p.email }}</li>
-									</ul>
-								</div><!--//resume-contact-->
-							</div><!--//profile-holder-->
-						</div><!--//resume-header-->
 						<div class="resume-body p-4 p-lg-5">
 							<div class="row">
 
 									<section class="resume-summary-section resume-section">
-										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>Despre</h3>
-                                        <label class="resume-summary-desc">{{ p.despre }}</label>
+										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>Parola veche:</h3>
+                                        <input style="width:50%">
 
-									</section><!--//resume-section-->
+										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>Parola nouă:</h3>
+                                        <input style="width:50%">
 
+										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>Confirmă parola:</h3>
+                                        <input style="width:50%">
+                                    </section>
 
-									<hr>
-									<section class="resume-projects-section resume-section">
-										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-3"><i class="resume-section-heading-icon bi bi-code-slash me-2"></i>Optional</h3>
-                                        <label class="resume-summary-desc">{{ p.optional }}</label>
-									</section>
-									<hr>
 								</div><!--//col-side-->
-                                <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;"><a href="/update">Update</a></button>
-							   <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;"><a href="/SchimbaParola">Shimbă parola</a></button>
+                                <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;"><a href="/SchimbaParola">Schimbă parola</a></button>
+						        <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;"><a href="/">Renunță</a></button>
+
                         </div><!--//row-->
 					    </div><!--//resume-body-->
 				    </div><!--//resume-wrapper-->
 				</div><!--//container-fluid-->
 			</div><!--//main-content-wrapper-->
-    {% endfor %}
 	</div><!--//container-->
 	{% endblock %}
 </body>
