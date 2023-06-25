@@ -29,7 +29,7 @@ def signin(request):
                 return render(request, '404Error.html')
             else:
                 request.session['check'] = 1
-                return redirect('http://127.0.0.1:8000/profil/')
+                return redirect('http://127.0.0.1:8000/home/')
     return render(request, 'login.html')
 
 
@@ -87,10 +87,24 @@ def home(request):
 
 def logout(request):
     request.session.clear()
-    return render(request, 'signup.html')
+    return render(request, 'login.html')
 
 
 def adminAdd(request):
+    request.session.clear()
+    mydb = mysql.connector.connect(
+        host='127.0.0.1',
+        database='licenta',
+        user='root',
+        password='P3lic@n27'
+    )
+    if request.method == 'POST':
+        userid = request.POST.get("userid")
+        tip = request.POST.get("tip")
+        cs = mydb.cursor()
+        statement = "INSERT INTO user(user, option) VALUES('{}', '{}') ".format(userid, tip)
+        cs.execute(statement)
+        mydb.commit()
     return render(request, 'AddUser.html')
 
 
@@ -100,3 +114,6 @@ def Sterge(request):
 
 def homeAdmin(request):
     return render(request, 'homeAdmin.html')
+
+def utilizatorii(request):
+    return render(request, 'VeziUtili.html')
