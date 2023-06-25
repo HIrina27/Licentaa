@@ -41,13 +41,44 @@ def updateprofil(request):
       if t == ():
          return render(request, '404Error.html')
       else:
-         statement = "UPDATE profilul SET nume='{}',telefon='{}', profesie='{}', despre='{}' WHERE user='{}'".format(nume, telefon, profesie, despre, use)
+         statement = "UPDATE profilul SET nume='{}',telefon='{}', profesie='{}', despre='{}', optional='{}' WHERE user='{}'".format(nume, telefon, profesie, despre, optional, use)
          cs.execute(statement)
          mydb.commit()
       return redirect('http://127.0.0.1:8000/profil/')
    return render(request, 'updateprofil.html', {'pr': pr})
 
 
-
 def schimba(request):
+   try:
+      use = request.session['user']
+   except KeyError:
+      return render(request, '404Error.html')
+   mydb = mysql.connector.connect(
+      host='127.0.0.1',
+      database='licenta',
+      user='root',
+      password='P3lic@n27'
+   )
+   if request.method == 'POST':
+      parolaveche = request.POST.get("parveche")
+      parolanoua = request.POST.get("parnoua")
+      parconf = request.POST.get("confpar")
+      print(parconf, parolaveche, parolanoua)
+      cs = mydb.cursor()
+      statement = "SELECT * FROM user WHERE user='{}' AND pwd='{}'".format(use, parolaveche)
+      cs.execute(statement)
+      t = tuple(cs.fetchall())
+      if t == ():
+         return render(request, '404Error.html')
+      else:
+         if parolanoua == parconf:
+            cs = mydb.cursor()
+            statement = "UPDATE user SET pwd='{}' WHERE user='{}' ".format(parolanoua, use)
+            cs.execute(statement)
+            mydb.commit()
+         else:
+            return render(request, '404Error.html')
+         return redirect('http://127.0.0.1:8000/profil/')
    return render(request, 'parola.html')
+
+
