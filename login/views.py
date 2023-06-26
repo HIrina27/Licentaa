@@ -1,6 +1,5 @@
 from django.contrib.sessions.models import Session
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.http import HttpResponse, response
 import mysql.connector
 from django.contrib.auth import authenticate, login
@@ -62,7 +61,7 @@ def signup(request):
                 mydb.commit()
             else:
                 return render(request, '404Error.html')
-        return render(request, 'signup.html')
+        return render(request, 'login.html')
     return render(request, 'signup.html')
 
 
@@ -76,10 +75,10 @@ def home(request):
         use = request.session['user']
     except KeyError:
         return render(request, '404Error.html')
-    if (User.objects.filter(user=use, option=0).exists()):
+    if (User.objects.filter(user=use, optio=0).exists()):
         return render(request, 'homeAdmin.html')
 
-    if(User.objects.filter(user=use, option=1).exists()):
+    if(User.objects.filter(user=use, optio=1).exists()):
         return render(request, 'home.html')
     else:
         return render(request, 'Home2.html')
@@ -91,7 +90,6 @@ def logout(request):
 
 
 def adminAdd(request):
-    request.session.clear()
     mydb = mysql.connector.connect(
         host='127.0.0.1',
         database='licenta',
@@ -100,20 +98,44 @@ def adminAdd(request):
     )
     if request.method == 'POST':
         userid = request.POST.get("userid")
-        tip = request.POST.get("tip")
+        option = request.POST.get("tip")
         cs = mydb.cursor()
-        statement = "INSERT INTO user(user, option) VALUES('{}', '{}') ".format(userid, tip)
+        statement = "INSERT INTO user(user, optio) VALUES ('{}','{}') ".format(userid, option)
         cs.execute(statement)
         mydb.commit()
+        return redirect('http://127.0.0.1:8000/home/')
     return render(request, 'AddUser.html')
 
-
 def Sterge(request):
+    mydb = mysql.connector.connect(
+        host='127.0.0.1',
+        database='licenta',
+        user='root',
+        password='P3lic@n27'
+    )
+    if request.method == 'POST':
+        userid = request.POST.get("userid")
+        cs = mydb.cursor()
+        statement = "DELETE FROM user WHERE user='{}' ".format(userid)
+        cs.execute(statement)
+        mydb.commit()
+        return redirect('http://127.0.0.1:8000/home/')
     return render(request, 'Sterge.html')
 
+def utilizatorii(request):
+    mydb = mysql.connector.connect(
+        host='127.0.0.1',
+        database='licenta',
+        user='root',
+        password='P3lic@n27'
+    )
+    if request.method == 'POST':
+        cs = mydb.cursor()
+        statement = "SELECT user, option FROM user"
+        cs.execute(statement)
+        t = cs.fetchall()
+    return render(request, 'VeziUtili.html', {'t': t})
 
 def homeAdmin(request):
     return render(request, 'homeAdmin.html')
 
-def utilizatorii(request):
-    return render(request, 'VeziUtili.html')

@@ -78,7 +78,7 @@ def schimba(request):
             mydb.commit()
          else:
             return render(request, '404Error.html')
-         return redirect('http://127.0.0.1:8000/profil/')
+         return redirect('http://127.0.0.1:8000/login/')
    return render(request, 'parola.html')
 
 

@@ -75,15 +75,16 @@
 						</div><!--//resume-header-->
 						<div class="resume-body p-4 p-lg-5">
 							<div class="row">
-
+                                <form method="POST">
+                                {% csrf_token %}
 									<section class="resume-summary-section resume-section">
 										<h3 class="resume-section-heading text-uppercase py-2 py-lg-3 py-2 py-lg-3"><i class="resume-section-heading-icon bi bi-person me-2"></i>User id:</h3>
                                         <input name="userid" style="width:50%">
                                     </section>
 
-								</div><!--//col-side-->
-                                <button type="button" style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;">Sterge</button>
-							</div><!--//row-->
+
+                                <button style="display:block; margin: 0 auto;background:#3630a3;color:white;font-size: 1.2em;font-weight: bold;margin-top: 50px;border-radius: 50%;">Sterge</button>
+							</form></div></div>
 					    </div><!--//resume-body-->
 				    </div><!--//resume-wrapper-->
 				</div><!--//container-fluid-->

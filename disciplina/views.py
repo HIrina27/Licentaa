@@ -203,7 +203,6 @@ def Mail(request):
     data = Disciplina.objects.filter(disciplina=use)
     open('templates/temp.html', "w").write(render_to_string('pdf.html', {'data': data}))
     pdfkit.from_file('templates/temp.html', "out.pdf", configuration=config)
-
     use = request.session['user']
     mydb = mysql.connector.connect(
         host='127.0.0.1',
